@@ -12,7 +12,6 @@ then
     echo "$1 is not a directory"
     exit 1
 fi
-directory_path="$(dirname "$1")"
 
 # Initialize counters
 file_count=0
@@ -28,6 +27,6 @@ while IFS= read -r -d '' file; do
   
   # If there are matching lines, increment match count
   match_count=$((match_count+match_lines))
-done < <(find "$directory_path" -type f -print0)
+done < <(find "$1" -type f -print0)
 
 echo "The number of files are $file_count and the number of matching lines are $match_count"
